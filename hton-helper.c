@@ -43,19 +43,11 @@ int main(int argc, const char *argv[])
     size_t i;
     for (i = 1; i < argc; i++) {
         char const *arg =  argv[i];
-        if (arg[0] == '-') {
-            switch (arg[1])
-            {
-            case 'h':
-                printf("usage: hton-helper <number> ... to convert");
-                printf("       hton-helper  ........... to see basic table");
-                printf("       hton-helper  -h ........ to see help");
+        if (strcmp(arg, "-h") == 0 ) {
+                printf("usage: hton-helper <number> ... to convert\n");
+                printf("       hton-helper  ........... to see basic table\n");
+                printf("       hton-helper  -h ........ to see help\n");
                 return 0;
-                break;
-            default:
-                printf("not recognised argument %s\n", arg);
-                break;
-            }
         } else {
             useConvertor = 1;
             inputNumber = atol(arg);
