@@ -23,7 +23,9 @@
 ****************************************************************************/
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <arpa/inet.h>
+#include <string.h>
 
 void printHeader()
 {
@@ -32,7 +34,7 @@ void printHeader()
 
 void printLine(long number)
 {
-    printf("%11ld %11u %11lu %11u %11lu\n", number, (uint16_t)htons((uint16_t)number), (uint32_t)htonl((uint32_t)number), (uint16_t)ntohs((uint16_t)number), (uint32_t)ntohl((uint32_t)number));
+    printf("%11ld %11u %11u %11u %11u\n", number, (uint16_t)htons((uint16_t)number), (uint32_t)htonl((uint32_t)number), (uint16_t)ntohs((uint16_t)number), (uint32_t)ntohl((uint32_t)number));
 }
 
 int main(int argc, const char *argv[])
