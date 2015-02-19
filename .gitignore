@@ -1,3 +1,6 @@
 hton-helper
 *.orig
 *.user
+hton-helper.changes
+rpm/*
+

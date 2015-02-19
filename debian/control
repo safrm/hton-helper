@@ -1,0 +1,13 @@
+Source: hton-helper
+Section: editors
+Priority: optional
+Maintainer: Miroslav Safr <miroslav.safr@gmail.com>
+Build-Depends: debhelper (>= 5), git-core, gcc
+Suggest: appver
+Standards-Version: 3.8.1
+Homepage: http://safrm.net/projects/hton-helper
+
+Package: hton-helper
+Architecture: all
+Depends:  ${misc:Depends},  ${shlibs:Depends}
+Description: Byte order helper and calculator
