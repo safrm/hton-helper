@@ -42,7 +42,7 @@ int main(int argc, const char *argv[])
     int useConvertor = 0;
     long inputNumber = 0;
     //cmdline
-    size_t i;
+    int i;
     for (i = 1; i < argc; i++) {
         char const *arg =  argv[i];
         if (strcmp(arg, "-h") == 0 ) {
