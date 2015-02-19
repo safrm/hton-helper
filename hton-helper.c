@@ -32,7 +32,7 @@ void printHeader()
 
 void printLine(long number)
 {
-    printf("%11ld %11u %11ld %11u %11ld\n",number,  htons((uint16_t)number), htonl((uint32_t)number), ntohs((uint16_t)number), ntohl((uint32_t)number));
+    printf("%11ld %11u %11lu %11u %11lu\n", number, (uint16_t)htons((uint16_t)number), (uint32_t)htonl((uint32_t)number), (uint16_t)ntohs((uint16_t)number), (uint32_t)ntohl((uint32_t)number));
 }
 
 int main(int argc, const char *argv[])
@@ -92,8 +92,8 @@ int main(int argc, const char *argv[])
         printLine(65536);
         printLine(16777215);
         printLine(16777216);
+        printLine(4294967040);
         printLine(4294967295);
-
     }
     return 0;
 }
