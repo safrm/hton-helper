@@ -3,4 +3,5 @@ hton-helper
 *.user
 hton-helper.changes
 rpm/*
+*.o
 
