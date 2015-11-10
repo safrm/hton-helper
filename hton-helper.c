@@ -79,10 +79,12 @@ int main(int argc, const char *argv[])
     } else {
         //table with basic values
         printHeader();
+        printLine(-32768);
         printLine(0);
         printLine(1);
         printLine(-1);
         printLine(256);
+        printLine(32767);
         printLine(65536);
         printLine(16777215);
         printLine(16777216);
