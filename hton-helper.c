@@ -41,6 +41,7 @@ int main(int argc, const char *argv[])
 {
     int useConvertor = 0;
     long inputNumber = 0;
+    int quiet = 0;
     //cmdline
     int i;
     for (i = 1; i < argc; i++) {
@@ -49,7 +50,10 @@ int main(int argc, const char *argv[])
                 printf("usage: hton-helper <number> ... to convert\n");
                 printf("       hton-helper  ........... to see basic table\n");
                 printf("       hton-helper  -h ........ to see help\n");
+                printf("       hton-helper  -q ........ quiet mode\n");
                 return 0;
+        } else if (strcmp(arg, "-q") == 0 ) {
+            quiet = 1;
         } else {
             useConvertor = 1;
             inputNumber = atol(arg);
@@ -58,23 +62,29 @@ int main(int argc, const char *argv[])
             if (strcmp(buffer, arg) != 0) {
                 printf("error: input is not number %s\n", arg);
                 return 1;
-            } else
+            } else if (!quiet)
                 printf("input number: %s\n", arg);
         }
     }
 
     //byteorder info BE LE
-    static long int str[2] = {0x41424344,0x0}; //ASCII "ABCD"
-    if(strcmp("DCBA", (char *)str) == 0)
-        printf("Running on: little-endian (Least Significant Byte) (PC)\n");
-    else if(strcmp("ABCD", (char *)str) == 0)
-        printf("Running on: big-endian (Most Significant Byte) (MC,Sun,HP)\n");
-    else
-        printf("Running on: unknown-endian\n");
+    if (!quiet)
+    {
+        static long int str[2] = {0x41424344,0x0}; //ASCII "ABCD"
+        if(strcmp("DCBA", (char *)str) == 0)
+            printf("Running on: little-endian (Least Significant Byte) (PC)\n");
+        else if(strcmp("ABCD", (char *)str) == 0)
+            printf("Running on: big-endian (Most Significant Byte) (MC,Sun,HP)\n");
+        else
+            printf("Running on: unknown-endian\n");
+    }
 
     //convertor
     if (useConvertor) {
-        printHeader();
+        if (!quiet)
+        {
+            printHeader();
+        }
         printLine(inputNumber);
     } else {
         //table with basic values
