@@ -3,6 +3,9 @@ include /usr/share/dpkg/pkg-info.mk
 DEB_VERBOSE_ALL=yes
 export DH_VERBOSE=1
 
+configure-stamp:
+	dh_testdir
+	qmake
 %:
 	dh  $@
 

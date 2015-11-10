@@ -16,9 +16,12 @@ Byte order helper and calculator
 %setup -c -n ./%{name}-%{version}
 
 %build
+qmake
 make %{?jobs:-j%jobs} all
 
 %install
+rm -rf %{buildroot}
+export INSTALL_ROOT=%{buildroot}
 make install  -e DESTDIR=%{buildroot}
 
 %clean
