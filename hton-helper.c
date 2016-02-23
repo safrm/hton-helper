@@ -27,6 +27,8 @@
 #include <arpa/inet.h>
 #include <string.h>
 
+int gHex = 0;
+
 void printHeader()
 {
     printf("\n        int       htons       htonl       ntohs       ntohl\n");
@@ -34,7 +36,14 @@ void printHeader()
 
 void printLine(long number)
 {
-    printf("%11ld %11u %11u %11u %11u\n", number, (uint16_t)htons((uint16_t)number), (uint32_t)htonl((uint32_t)number), (uint16_t)ntohs((uint16_t)number), (uint32_t)ntohl((uint32_t)number));
+	if (gHex)
+	{
+	  	printf("%11X %11X %11X %11X %11X\n", (int32_t)number, (uint16_t)htons((uint16_t)number), (uint32_t)htonl((uint32_t)number), (uint16_t)ntohs((uint16_t)number), (uint32_t)ntohl((uint32_t)number));
+	}
+	else
+	{
+    	printf("%11ld %11u %11u %11u %11u\n", number, (uint16_t)htons((uint16_t)number), (uint32_t)htonl((uint32_t)number), (uint16_t)ntohs((uint16_t)number), (uint32_t)ntohl((uint32_t)number));
+	}
 }
 
 int main(int argc, const char *argv[])
@@ -50,10 +59,13 @@ int main(int argc, const char *argv[])
                 printf("usage: hton-helper <number> ... to convert\n");
                 printf("       hton-helper  ........... to see basic table\n");
                 printf("       hton-helper  -h ........ to see help\n");
-                printf("       hton-helper  -q ........ quiet mode\n");
+                printf("                    -q ........ quiet mode\n");
+                printf("                    -x ........ print in hex(default dec)\n");
                 return 0;
         } else if (strcmp(arg, "-q") == 0 ) {
             quiet = 1;
+        } else if (strcmp(arg, "-x") == 0 ) {
+            gHex = 1;
         } else {
             useConvertor = 1;
             inputNumber = atol(arg);
@@ -63,7 +75,7 @@ int main(int argc, const char *argv[])
                 printf("error: input is not number %s\n", arg);
                 return 1;
             } else if (!quiet)
-                printf("input number: %s\n", arg);
+                printf("input number: %s = %X\n", arg, (int32_t)inputNumber);
         }
     }
 
