@@ -16,7 +16,7 @@ Byte order helper and calculator
 %setup -c -n ./%{name}-%{version}
 
 %build
-qmake
+jss-docs-update ./doc -sv %{version} 
 make %{?jobs:-j%jobs} all
 
 %install
