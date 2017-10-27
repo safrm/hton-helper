@@ -84,11 +84,11 @@ int main(int argc, const char *argv[])
     {
         static long int str[2] = {0x41424344,0x0}; //ASCII "ABCD"
         if(strcmp("DCBA", (char *)str) == 0)
-            printf("Running on: little-endian (Least Significant Byte) (PC)\n");
+            printf("Running on: little-endian (Least Significant Byte)\"%s\" (PC)\n", (char *)str);
         else if(strcmp("ABCD", (char *)str) == 0)
-            printf("Running on: big-endian (Most Significant Byte) (MC,Sun,HP)\n");
+            printf("Running on: big-endian (Most Significant Byte)\"%s\" (MC,Sun,HP)\n", (char *)str);
         else
-            printf("Running on: unknown-endian\n");
+            printf("Running on: unknown-endian \"%s\"\n", (char *)str);
     }
 
     //convertor
